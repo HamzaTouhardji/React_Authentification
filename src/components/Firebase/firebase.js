@@ -15,7 +15,7 @@ const config = {
   class Firebase {
     constructor() {
       app.initializeApp(config);
-      import 'firebase/auth';
+      //import 'firebase/auth';
     }
 
     // *** Auth API *** 
