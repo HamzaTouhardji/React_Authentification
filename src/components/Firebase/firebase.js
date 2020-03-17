@@ -2,39 +2,35 @@ import app from 'firebase/app';
 import 'firebase/auth';
 
 const config = {
-    apiKey: "AIzaSyAB8ZNLYQ4SZw9AiE8D1uaXaAgy7H0r9po",
-    authDomain: "parrain-orphelin.firebaseapp.com",
-    databaseURL: "https://parrain-orphelin.firebaseio.com",
-    projectId: "parrain-orphelin",
-    storageBucket: "parrain-orphelin.appspot.com",
-    messagingSenderId: "194725904318",
-    appId: "1:194725904318:web:c4eaffd198dd7afa18c3ef",
-    measurementId: "G-3DSBTTKF13"
-  };
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+};
 
-  class Firebase {
-    constructor() {
-      app.initializeApp(config);
-      //import 'firebase/auth';
-    }
+class Firebase {
+  constructor() {
+    app.initializeApp(config);
 
-    // *** Auth API *** 
-    
-    //sign up function
-    doCreateUserWithEmailAndPassword = (email, password) =>
+    this.auth = app.auth();
+  }
+
+  // *** Auth API ***
+
+  doCreateUserWithEmailAndPassword = (email, password) =>
     this.auth.createUserWithEmailAndPassword(email, password);
 
-    //login function
-    doSignInWithEmailAndPassword = (email, password) =>
+  doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
-    //logout function
-    doSignOut = () => this.auth.signOut();
+  doSignOut = () => this.auth.signOut();
 
-    //functions to manage passwords 
-    doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
-    
-    doPasswordUpdate = password =>
+  doPasswordReset = email => this.auth.sendPasswordResetEmail(email);
+
+  doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
-  }
-  export default Firebase;
+}
+
+export default Firebase;

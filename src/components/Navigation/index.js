@@ -1,28 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-
+import SignOutButton from '../SignOut';
 import * as ROUTES from '../../constants/routes';
 
 const Navigation = () => (
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <Link to={ROUTES.SIGN_IN} class="nav-link">Sign In</Link>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <div className="collapse navbar-collapse" id="navbarNav">
+        <ul className="navbar-nav">
+          <li className="nav-item active">
+            <Link to={ROUTES.SIGN_IN} className="nav-link">Sign In</Link>
           </li>
-          <li class="nav-item active">
-            <Link to={ROUTES.LANDING} class="nav-link">Landing</Link>
+          <li className="nav-item active">
+            <Link to={ROUTES.LANDING} className="nav-link">Landing</Link>
           </li>
-          <li class="nav-item active">
-            <Link to={ROUTES.HOME} class="nav-link">Home</Link>
+          <li className="nav-item active">
+            <Link to={ROUTES.HOME} className="nav-link">Home</Link>
           </li>
-          <li class="nav-item active">
-            <Link to={ROUTES.ACCOUNT} class="nav-link">Account</Link>
+          <li className="nav-item active">
+            <Link to={ROUTES.ACCOUNT} className="nav-link">Account</Link>
           </li>
-          <li class="nav-item active">
-            <Link to={ROUTES.ADMIN} class="nav-link">Admin</Link>
+          <li className="nav-item active">
+            <Link to={ROUTES.ADMIN} className="nav-link">Admin</Link>
+          </li>
+          <li className="nav-item active">
+            <SignOutButton />
           </li>
         </ul>
       </div>

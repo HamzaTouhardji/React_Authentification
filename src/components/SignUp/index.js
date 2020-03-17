@@ -6,7 +6,7 @@ import * as ROUTES from '../../constants/routes';
 
 const SignUpPage = () => (
   <div>
-    <h1>SignUp</h1>
+    <h1 className="text-center">SignUp</h1>
     <SignUpForm />
   </div>
 );
@@ -27,7 +27,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { /* username,*/ email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -39,7 +39,6 @@ class SignUpFormBase extends Component {
         this.setState({ error });
       });
 
-    //I call this function so as not to have an infinite loop in the form
     event.preventDefault();
   };
 
@@ -56,7 +55,6 @@ class SignUpFormBase extends Component {
       error,
     } = this.state;
 
-    //for complete all input, 
     const isInvalid =
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
@@ -64,36 +62,53 @@ class SignUpFormBase extends Component {
       username === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <button disabled={isInvalid} type="submit">
+      <form onSubmit={this.onSubmit} className="container">
+        <div className="form-group">
+          <label>Full Name</label>
+          <input
+            className="form-control"
+            name="username"
+            value={username}
+            onChange={this.onChange}
+            type="text"
+          />
+        </div>        
+        
+        <div className="form-group">
+          <label>Email Address</label>
+          <input
+            className="form-control"
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+          />
+        </div>        
+        
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            className="form-control"
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+          />
+        </div>        
+        
+        <div className="form-group">
+          <label>Confirm Password</label>
+          <input
+            className="form-control"
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+          />
+        </div>
+
+
+        <button className="btn btn-primary" disabled={isInvalid} type="submit">
           Sign Up
         </button>
 
@@ -104,7 +119,7 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-  <p>
+  <p className="container mt-3">
     Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
   </p>
 );
