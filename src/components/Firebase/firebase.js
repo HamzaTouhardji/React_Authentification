@@ -33,6 +33,13 @@ class Firebase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
+
+  // *** User API ***
+  
+  //by id 
+  user = uid => this.db.ref(`users/${uid}`);
+  //all users 
+  users = () => this.db.ref('users');
 }
 
 export default Firebase;
