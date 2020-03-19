@@ -1,4 +1,5 @@
 {
+  "homepage": "https://hamzatouhardji.github.io/parrain-orphelin/",
   "name": "react-firebase-authentication",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +15,8 @@
     "recompose": "^0.30.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
