@@ -1,11 +1,17 @@
 import React from 'react';
+import * as ROLES from '../../constants/roles';
+import {  withAuthorization } from '../Session';
 
-import  { FirebaseContext } from '../Firebase';
-const SomeComponent = () => (
-  <FirebaseContext.Consumer>
-    {firebase => {
-      return <div>I've access to Firebase and render something.</div>;
-    }}
-  </FirebaseContext.Consumer>
+const AdminPage = () => (
+  <div>
+    <h1>Admin</h1>
+    <p>
+      Restricted area! Only users with the admin role are authorized.
+    </p>
+  </div>
 );
-export default SomeComponent;
+
+const condition = authUser =>
+  authUser && !!authUser.roles[ROLES.ADMIN];
+  
+export default withAuthorization(condition)(AdminPage);
